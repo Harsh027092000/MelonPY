@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/dev/style.css">
+    <link rel="stylesheet" href="/static/dev/document.css">
+    <link rel="icon" href="/static/dev/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="/static/dev/favicon.ico" type="image/x-icon">
+    <title>MelonPY || Document</title>
+</head>
+
+<body>
+    <div class="Phase">
+        <h1>MelonPY</h1>
+        Documentation
+    </div>
+    <div class="index">
+        <ol>
+            <li class="m-2"><a href="/docs?#intro">Introduction</a></li>
+            <li class="m-2"><a href="/docs?#pur">Purpose</a></li>
+            <li class="m-2"><a href="/docs?#fea">Features</a></li>
+            <li class="m-2"><a href="/docs?#core">Core Concepts</a>
+                <ol class="m-2 list-style-disc">
+                    <li><a href="/docs?#core_1">Create your first view and url routing</a></li>
+                    <li><a href="/docs?#core_2">Render HTML file</a></li>
+                    <li><a href="/docs?#core_3">Server Statics</a></li>
+                    <li><a href="/docs?#core_4">Render HTML with jinja2</a></li>
+                    <li><a href="/docs?#core_5">Json Response</a></li>
+                    <li><a href="/docs?#core_6">Requests in Melon</a></li>
+                    <li><a href="/docs?#core_7">Middleware</a></li>
+                    <li><a href="/docs?#core_8">session and cookies</a></li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+    <div class="main">
+        <ol>
+            <li>
+                <div class="m-2">
+                    <h1 class="m-1 green-text" id="intro">Introduction</h1>
+                    <div class="mt-1 p-1">
+                        <p>MelonPY is a lightweight web framework designed for small-scale projects. It offers a simple
+                            yet
+                            powerful
+                            interface for building web applications,complete with routing, templating, session
+                            management,
+                            and
+                            middleware support.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="m-2">
+                    <h1 class="m-1 green-text" id="pur">Purpose</h1>
+                    <div class="mt-1 p-1">
+                        <p>The MelonPY framework is designed to provide a lightweight and flexible platform for building
+                            web
+                            applications. Its primary goal is to simplify the development process by offering essential
+                            features that facilitate rapid application development while maintaining a clean and
+                            organized
+                            codebase. MelonPY is ideal for small-sized projects, enabling developers to focus on
+                            creating
+                            functional applications without being overwhelmed by complex configurations.</p>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="m-2">
+                    <h1 class="m-1 green-text" id="fea">Features</h1>
+                    <div class="mt-1 p-1">
+                        <ul class="list-style-sq">
+                            <li class="text-justify p-1">Lightweight: MelonPY is designed to be minimalistic, allowing
+                                developers to quickly set up and run their applications without unnecessary overhead.
+                            </li>
+                            <li class="text-justify p-1">Modular Structure: The framework follows a modular approach,
+                                with
+                                clearly defined components such as routing, middleware, and error handling, promoting
+                                code
+                                organization and reusability.</li>
+                            <li class="text-justify p-1">Template Rendering: Supports a simple template rendering system
+                                with
+                                jinja2 to create dynamic HTML pages, making it easier to separate business logic from
+                                presentation.</li>
+                            <li class="text-justify p-1">Static/dev File Handling: Provides a straightforward way to
+                                serve
+                                static/dev
+                                files (CSS, JavaScript, images) alongside dynamic content.</li>
+                            <li class="text-justify p-1">Error Handling: Built-in error handling methods to manage
+                                exceptions
+                                gracefully, ensuring a better user experience.</li>
+                            <li class="text-justify p-1">Middleware Support: Allows developers to implement middleware
+                                functions
+                                that can process requests and responses, enabling custom logic at different stages of
+                                the
+                                request lifecycle.</li>
+                            <li class="text-justify p-1">Routing: Simple yet powerful URL routing capabilities, allowing
+                                developers to map URLs to specific view functions effortlessly.</li>
+                            <li class="text-justify p-1">Session Management: Implements basic session functionality to
+                                store
+                                user-related data across requests, enabling a more personalized user experience.</li>
+                            <li class="text-justify p-1">GET Method: Used for retrieving data, supports path parameters
+                                and
+                                query parameters, and can handle requests with or without parameters.</li>
+                            <li class="text-justify p-1">POST Method: Used for sending data to the server, can handle
+                                form
+                                submissions and JSON data, facilitating resource creation and updates.</li>
+                            <li class="text-justify p-1">Extensible: The framework is designed to be easily extensible,
+                                allowing
+                                developers to integrate additional features or customize existing ones based on project
+                                requirements.</li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <div class="m-2">
+                    <h1 class="m-1 green-text" id="core">Core Concepts</h1>
+                    <div class="mt-1 p-1">
+                        <ul class="lsn">
+                            <li class="text-justify p-1" id="core_1">
+                                <h2 class="m-1 green-text" id="core">Create your first view and url routing</h2>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                    <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                    <span class="string">def</span> <span class="string white-text">example</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string">return</span> <span class="string white-text">melon_app.html_response</span><span class="string yellow-text">(</span><span class="string orange-text">'Hello from melon'</span><span class="string yellow-text">)</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/melon_urls.py</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">MelonAPP</span> <span class="string">import</span> <span class="string white-text">app</span>    
+                                    <span class="string">Paths = </span><span class="string yellow-text">[</span>
+                                    <span class="string purple-text">(</span><span class="string orange-text">"/example"</span><span class="string white-text">, app.example</span><span class="string purple-text">)</span>
+                                    <span class="string yellow-text">]</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Run Server</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                    <span class="string white-text">python3 plant_melon.py</span>   
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Paste <span
+                                        class="string orange-text">"localhost:666/example"</span> on Browser</h3>
+                                <img src="/static/dev/example-1.png" alt="" class="m-1 p-1">
+                            </li>
+                            <li class="text-justify p-1" id="core_2">
+                                <h2 class="m-1 green-text">Render HTML template</h2>
+                                <h3 class="mt-1 p-1 green-text">Melon/melon_templates/example_2.html</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                        <span class="keyword">&lt;html&gt;</span>
+                                          <span class="keyword">&lt;head&gt;</span>
+                                            <span class="keyword">&lt;title&gt;</span>example_2<span class="keyword">&lt;/title&gt;</span>
+                                          <span class="keyword">&lt;/head&gt;</span>
+                                          <span class="keyword">&lt;body&gt;</span>
+                                            <span class="keyword">&lt;h1&gt;</span>Hello from melon!<span class="keyword">&lt;/h1&gt;</span>
+                                          <span class="keyword">&lt;/body&gt;</span>
+                                        <span class="keyword">&lt;/html&gt;</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                    <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                    <span class="string">def</span> <span class="string white-text">example_2</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string">return</span> <span class="string white-text">melon_app.render_template</span><span class="string yellow-text">(</span><span class="string orange-text">'example_2.html'</span><span class="string yellow-text">)</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/melon_urls.py</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">MelonAPP</span> <span class="string">import</span> <span class="string white-text">app</span>    
+                                    <span class="string">Paths = </span><span class="string yellow-text">[</span>
+                                    <span class="string purple-text">(</span><span class="string orange-text">"/example_2"</span><span class="string white-text">, app.example_2</span><span class="string purple-text">)</span>
+                                    <span class="string yellow-text">]</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Paste <span
+                                        class="string orange-text">"localhost:666/example_2"</span> on Browser</h3>
+                                <img src="/static/dev/example-2.png" alt="" class="m-1 p-1">
+                            </li>
+                            <li class="text-justify p-1" id="core_3">
+                                <h2 class="m-1 green-text">Serve Statics</h2>
+                                <h3 class="mt-1 p-1 green-text">Melon/static/css/style.css</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                        <span class="keyword yellow-text">.green-text{</span>
+                                            <span class="keyword lblue-text">color:</span><span class="keyword green-text">green</span><span class="string"> !important;</span>
+                                        <span class="keyword yellow-text">}</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Melon/melon_templates/example_2.html</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                        <span class="keyword">&lt;html&gt;</span>
+                                          <span class="keyword">&lt;head&gt;</span>
+                                            <span class="keyword">&lt;link</span> rel=<span class="keyword lblue-text">"stylesheet"</span> <span class="keyword">href=</span><span class="keyword orange-text">"/static/css/style.css"</span><span class="keyword">&gt;</span>
+                                            <span class="keyword">&lt;title&gt;</span>example_2<span class="keyword">&lt;/title&gt;</span>
+                                          <span class="keyword">&lt;/head&gt;</span>
+                                          <span class="keyword">&lt;body&gt;</span>
+                                            <span class="keyword">&lt;h1 <span class="keyword lblue-text">class=</span><span class="keyword orange-text">'green-text'</span>&gt;</span><span class="keyword green-text">Hello from melon!</span><span class="keyword">&lt;/h1&gt;</span>
+                                          <span class="keyword">&lt;/body&gt;</span>
+                                        <span class="keyword">&lt;/html&gt;</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Paste <span
+                                        class="string orange-text">"localhost:666/example_2"</span> on Browser</h3>
+                                <img src="/static/dev/example-3.png" alt="" class="m-1 p-1">
+                            </li>
+                            <li class="text-justify p-1" id="core_4">
+                                <h2 class="m-1 green-text">Render HTML with jinja2</h2>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                    <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                    <span class="string">def</span> <span class="string white-text">example_2</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string">return</span> <span class="string white-text">melon_app.render_template</span><span class="string yellow-text">(</span><span class="string orange-text">'example_2.html', <span class="string lblue-text">name=</span>Melon Ninja</span><span class="string yellow-text">)</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Melon/melon_templates/example_2.html</h3>
+                                <h4 class="mt-1 p-1 green-text">Supports jinja2</h4>
+                                <p class="mt-1 p-1">For more info on jinja2 <a
+                                        href="https://jinja.palletsprojects.com/en/stable/templates/">visit offical
+                                        Documentation</a></p>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                        <span class="keyword">&lt;html&gt;</span>
+                                          <span class="keyword">&lt;head&gt;</span>
+                                            <span class="keyword">&lt;title&gt;</span>example_2<span class="keyword">&lt;/title&gt;</span>
+                                          <span class="keyword">&lt;/head&gt;</span>
+                                          <span class="keyword">&lt;body&gt;</span>
+                                            <span class="keyword">&lt;h1&gt;</span>Hello from &#123;&#123;name&#125;&#125;!<span class="keyword">&lt;/h1&gt;</span>
+                                          <span class="keyword">&lt;/body&gt;</span>
+                                        <span class="keyword">&lt;/html&gt;</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Paste <span
+                                        class="string orange-text">"localhost:666/example_2"</span> on Browser</h3>
+                                <img src="/static/dev/example-4.png" alt="" class="m-1 p-1">
+                            </li>
+                            <li class="text-justify p-1" id="core_5">
+                                <h2 class="m-1 green-text">Json Response</h2>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                    <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                    <span class="string">def</span> <span class="string white-text">example_2</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string">return</span> <span class="string white-text">melon_app.json_response</span><span class="string yellow-text">(</span><span class="string purple-text">{</span><span class="string yellow-text">"name":"melon"</span><span class="string purple-text">}</span><span class="string yellow-text">)</span>
+                                    </code>
+                                </pre>
+                            </li>
+                            <li class="text-justify p-1" id="core_6">
+                                <h2 class="m-1 p-1 green-text">Requests in MelonPY</h2>
+                                <h3 class="m-1 p-1 green-text">GET</h3>
+                                <h3 class="m-1 p-1 green-text">Query</h3>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/melon_urls.py</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">MelonAPP</span> <span class="string">import</span> <span class="string white-text">app</span>    
+                                    <span class="string">Paths = </span><span class="string yellow-text">[</span>
+                                    <span class="string purple-text">(</span><span class="string orange-text">"/example_3"</span><span class="string white-text">, app.example_3</span><span class="string purple-text">)</span>
+                                    <span class="string yellow-text">]</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                        <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                        <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                        <span class="string">def</span> <span class="string white-text">example_3</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                            <span class="string white-text">query = request.query_params.get</span><span class="string yellow-text">(</span><span class="string orange-text">'query',</span><span class="string lblue-text">['']</span><span class="string yellow-text">)</span><span class="string purple-text">[0]</span>
+                                            <span class="string">return</span> <span class="string white-text">melon_app.html_response</span><span class="string yellow-text">(</span><span class="string yellow-text">f"&lt;h1&gt;Search Results for: {query}&lt;/h1&gt;"</span><span class="string yellow-text">)</span>
+                                        </code>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Paste <span
+                                        class="string orange-text">"localhost:666/example_3?query=melon"</span> on
+                                    Browser</h3>
+                                <img src="/static/dev/example-5.png" alt="" class="m-1 p-1">
+                                <h3 class="m-1 p-1 green-text">Path Parameter</h3>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/melon_urls.py</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">MelonAPP</span> <span class="string">import</span> <span class="string white-text">app</span>    
+                                    <span class="string">Paths = </span><span class="string yellow-text">[</span>
+                                    <span class="string purple-text">(</span><span class="string orange-text">"/example_3/&lt;name&gt/"</span><span class="string white-text">, app.example_3</span><span class="string purple-text">)</span>
+                                    <span class="string yellow-text">]</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Paste <span
+                                        class="string orange-text">"localhost:666/example_3/melon"</span> on Browser
+                                </h3>
+                                <img src="/static/dev/example-6.png" alt="" class="m-1 p-1">
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet  m-2">
+                                    <code>
+                                        <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                        <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                        <span class="string">def</span> <span class="string white-text">example_3</span><span class="string yellow-text">(</span><span class="string white-text">request, name</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                            <span class="string">return</span> <span class="string white-text">melon_app.html_response</span><span class="string yellow-text">(</span><span class="string yellow-text">f"&lt;h1&gt;Search Results for: {name}&lt;/h1&gt;"</span><span class="string yellow-text">)</span>
+                                        </code>
+                                    </code>
+                                </pre>
+                                <h3 class="m-1 p-1 green-text">POST</h3>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                    <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                    <span class="string">def</span> <span class="string white-text">example_2</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string lblue-text">if</span> <span class="string white-text">request.command == </span> <span class="string orange-text">'POST'</span>
+                                        <span class="string white-text">name = request.POST_DATA.get('name') </span>
+                                        <span class="string">return</span> <span class="string white-text">melon_app.render_template</span><span class="string yellow-text">(</span><span class="string orange-text">'example_2.html', <span class="string lblue-text">name=</span>name</span><span class="string yellow-text">)</span>
+                                    </code>
+                                </pre>
+                                <img src="/static/dev/example-4.png" alt="" class="m-1 p-1">
+                            </li>
+                            <li class="text-justify p-1" id="core_7">
+                                <h2 class="m-1 green-text">Middleware</h2>
+                                <h3 class="mt-1 p-1 green-text">Melon/middleware.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">import</span> <span class="string white-text">datetime</span>
+                                    <span class="string">def</span> <span class="string white-text">logging_middleware</span><span class="string yellow-text">(</span><span class="string white-text">request,reponse=</span><span class="string">None</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string">if not </span><span class="string white-text">reponse : </span>
+                                            <span class="string white-text">print(f'[{datetime.datetime.now().strftime('%d/%b/%Y %H:%M:%S')}] "{request.command} {request.path}"') </span>
+                                        <span class="string">return</span> <span class="string white-text">response</span>
+                                    </code>
+                                </pre>
+                                <h3 class="mt-1 p-1 green-text">Register Middleware in Melon/config.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">.middleware</span> <span class="string">import</span> <span class="string white-text">logging_middleware</span>
+                                    <span class="string">middlewares_map = </span><span class="string yellow-text">[</span>
+                                    <span class="string white-text">logging_middleware,</span> <span class="string green-text">#register your middleware here</span>
+                                    <span class="string yellow-text">]</span>
+                                    </code>
+                                </pre>
+                            </li>
+                            <li class="text-justify p-1" id="core_8">
+                                <h2 class="m-1 green-text">Session and cookies</h2>
+                                <h3 class="mt-1 p-1 green-text">MelonAPP/app.py</h3>
+                                <pre class="code-snippet m-2">
+                                    <code>
+                                    <span class="string">from</span> <span class="string white-text">Melon.app</span> <span class="string">import</span> <span class="string white-text">Mymelon</span>
+                                    <span class="string white-text">melon_app = Mymelon</span><span class="string yellow-text">()</span>
+                                    <span class="string">def</span> <span class="string white-text">example_4</span><span class="string yellow-text">(</span><span class="string white-text">request</span><span class="string yellow-text">)</span><span class="string white-text">:</span>
+                                        <span class="string white-text">session = getattr</span><span class="string yellow-text">(</span><span class="string white-text">request,</span><span class="string orange-text">"sessions",</span><span class="string purple-text">{</span> <span class="string purple-text">}</span><span class="string yellow-text">)</span>
+                                        <span class="string white-text">visit_count = session.get</span><span class="string yellow-text">(</span><span class="string orange-text">"visit",</span><span class="string green-text">0</span><span class="string yellow-text">)</span>
+                                        <span class="string white-text">visit_count +=</span><span class="string green-text">1</span>
+                                        <span class="string white-text">session</span><span class="string yellow-text">[</span><span class="string orange-text">"visit_count"</span><span class="string yellow-text">]</span><span class="string white-text"> = visit_count</span>
+                                        <span class="string">return</span> <span class="string white-text">melon_app.html_response</span><span class="string yellow-text">(</span><span class="string orange-text">f'Welcome! You have visited {visit_count} times.'</span><span class="string yellow-text">)</span>
+                                    </code>
+                                </pre>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+</body>
+
+</html>
